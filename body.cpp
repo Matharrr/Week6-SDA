@@ -6,7 +6,7 @@ void CreateList()
 	
 }
 
-naddress AlokasiNama()
+Naddress AlokasiNama()
 {
 	
 }
@@ -51,7 +51,7 @@ void DeleteNLast()
 	
 }
 
-void DeleteNAfter();
+void DeleteNAfter()
 {
 	
 }
@@ -66,7 +66,7 @@ void DeleteAll()
 	
 }
 
-kaddress AlokasiKota()
+Kaddress AlokasiKota()
 {
 	
 }
@@ -95,7 +95,7 @@ void InsertKota()
 	
 }
 
-kaddress SearchKota()
+Kaddress SearchKota()
 {
 	
 }

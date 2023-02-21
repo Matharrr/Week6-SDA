@@ -9,23 +9,27 @@
 #define NKota(P) (P)->next_kota
 
 typedef char *infotype;
-typedef struct tKotaList *Kaddress;
-typedef struct tKotaList
-{
-	infotype info;
-	address next_nama;
-	adresss next_kota;
-} KotaList;
 typedef struct tNamaList *Naddress;
 typedef struct tNamaList
 {
 	infotype info;
-	address next;
+	Naddress next;
 } NamaList;
+typedef struct tKotaList *Kaddress;
+typedef struct tKotaList
+{
+	infotype info;
+	Naddress next_nama;
+	Kaddress next_kota;
+} KotaList;
+typedef struct{
+	caddress First;
+}List;
+
 
 void CreateList();
 
-naddress AlokasiNama();
+Naddress AlokasiNama();
 
 void DealokasiNama();
 
@@ -37,7 +41,7 @@ void InsertNama();
 
 int SearchNamaPerKota();
 
-void CountNama():
+void CountNama();
 
 void DeleteNFirst();
 
@@ -49,7 +53,7 @@ void DeleteNama();
 
 void DeleteAll();
 
-kaddress AlokasiKota();
+Kaddress AlokasiKota();
 
 void DealokasiKota();
 
@@ -61,7 +65,7 @@ void InsertKAfter();
 
 void InsertKota();
 
-kaddress SearchKota();
+Kaddress SearchKota();
 
 int CountKota();
 
