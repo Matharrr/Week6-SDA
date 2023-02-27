@@ -25,7 +25,7 @@ typedef struct tKotaList
 	Kaddress next_kota;
 } KotaList;
 typedef struct{
-	caddress First;
+	Kaddress First;
 }List;
 
 

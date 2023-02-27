@@ -125,8 +125,24 @@ void DeleteKota()
 	
 }
 
-void PrintData(){
-	
+void PrintData(List data)
+{
+	int i=0;
+	Kaddress X = First(data);
+	Naddress Y;
+	while(X != Nil){
+		printf ("%d. %s", i+1, Info(X));
+		Y = NNama(X);
+		if (Y == Nil)
+			printf("Kota kosong...");
+		else 
+			while (Y != Nil){
+				printf(" %s ", Info(Y));
+				Y = Next(Y);
+			}
+		X = NKota(X);
+		i++;
+	}
 }
 
 void menu()

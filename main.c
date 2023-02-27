@@ -5,6 +5,7 @@
 int main(){
 	int Imenu;
 	List listhubung;
+	infotype isi;
 	while(1){
 		menu();
 		scanf("%d", &Imenu);
@@ -13,9 +14,26 @@ int main(){
 				if(IsEmpty(listhubung) == true)
 					printf("\nlist masih kosong");
 				else
-					
+					PrintData(listhubung);
+				printf("tekan apa saja");
+				getch();
+				system("cls");
 				break;
 			case 2 :
+				isi = (infotype) malloc(MAXCITY);
+				
+				if (isi != Nil){
+					printf("Masukan Nama kota");
+					scanf("%s", isi);
+					if (SearchKota(listhubung, isi) == Nil){
+						insertKota(&listhubung, isi);
+					}else{
+						system("cls");
+						printf("Kota sudah ada");
+					}
+				}else{
+					printf("Kota sudah penuh");
+				}
 				break;
 			case 3 :
 				break;
