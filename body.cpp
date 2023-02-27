@@ -5,8 +5,7 @@ void CreateList(List *kota){
     First(*kota) = Nil;
 }
 
-
-Naddress AlokasiNama(infotype X) {
+Naddress AlokasiNama(infotype X){
     Naddress P = (Naddress)malloc(sizeof(Node));
     if (P != NULL) {
         P->info.nama = (char*)malloc((strlen(X.nama) + 1) * sizeof(char));
@@ -22,11 +21,11 @@ Naddress AlokasiNama(infotype X) {
     return P;
 }
 
-void DealokasiNama(Naddress P) {
+void DealokasiNama(Naddress P){
     free(P);
 }
 
-void InsertNLast(Naddress *P, infotype X) {
+void InsertNLast(Naddress *P, infotype X){
     Naddress temp = AlokasiNama(X);
     if (temp != NULL) {
         if (*P == NULL) {
@@ -40,7 +39,8 @@ void InsertNLast(Naddress *P, infotype X) {
         }
     }
 }
-void InsertNAfter(Naddress *P, infotype X) {
+
+void InsertNAfter(Naddress *P, infotype X){
     Naddress NewNode = AlokasiNama(X);
     if (NewNode != NULL) {
         if (*P == NULL) {
@@ -87,25 +87,64 @@ void InsertNama(List *kota, infotype X, int add){
     }
 }
 
-
-int SearchNamaPerKota()
-{
-	
+int SearchNamaPerKota(Naddress P, infotype X){
+    int count = 0;
+    while (P != NULL) {
+        if (strcmp(P->info.nama, X.nama) == 0) {
+            count++;
+        }
+        P = P->next;
+    }
+    return count;
 }
 
-void CountNama()
-{
-	
+void CountNama(List kota, infotype X){
+    int count = 0;
+    Naddress P = First(kota);
+    while (P != NULL) {
+        if (strcmp(Info(P).nama, X.nama) == 0) {
+            count++;
+        }
+        P = Next(P);
+    }
+    printf("Jumlah penduduk dengan nama %s adalah %d\n", X.nama, count);
 }
 
-void DeleteNFirst()
-{
-	
+void DeleteNFirst(Kaddress *kota){
+    Naddress P;
+    if(!IsEmpty((*kota).data)) {
+        P = First((*kota).data);
+        if (Next(P) == Nil) {
+            First((*kota).data) = Nil;
+            DealokasiNama(P);
+        } else {
+            First((*kota).data) = Next(P);
+            Prev(First((*kota).data)) = Nil;
+            Next(P) = Nil;
+            DealokasiNama(P);
+        }
+    }
 }
 
-void DeleteNLast()
-{
-	
+void DeleteNLast(Naddress *P){
+    Naddress last = *P;
+    Naddress prev = NULL;
+    
+    // mencari elemen terakhir dan elemen sebelumnya
+    while (last->next != NULL) {
+        prev = last;
+        last = last->next;
+    }
+    
+    // menghapus elemen terakhir
+    if (prev == NULL) {
+        *P = NULL;
+    } else {
+        prev->next = NULL;
+    }
+    
+    // dealokasi elemen yang dihapus
+    DealokasiNama(last);
 }
 
 void DeleteNAfter()
