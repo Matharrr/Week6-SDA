@@ -29,56 +29,56 @@ typedef struct{
 }List;
 
 
-void CreateList();
+void CreateList(List *kota);
 
-Naddress AlokasiNama();
+Naddress AlokasiNama(infotype X);
 
-void DealokasiNama();
+void DealokasiNama(Naddress P);
 
-void InsertNLast();
+void InsertNLast(Naddress *P, infotype);
 
-void InsertNAfter();
+void InsertNAfter(Naddress *P, infotype);
 
-void InsertNama();
+void InsertNama(List *kota, infotype X, int add);
 
-int SearchNamaPerKota();
+int SearchNamaPerKota(Naddress P, infotype X);
 
-void CountNama();
+void CountNama(List kota, infotype X);
 
-void DeleteNFirst();
+void DeleteNFirst(Kaddress *kota);
 
-void DeleteNLast();
+void DeleteNLast(Naddress *P);
 
-void DeleteNAfter();
+void DeleteNAfter(Naddress *P);
 
-void DeleteNama();
+void DeleteNama(List *kota, infotype X, int del);
 
-void DeleteAll();
+void DeleteAll(Kaddress *kota);
 
-Kaddress AlokasiKota();
+Kaddress AlokasiKota(infotype X);
 
-void DealokasiKota();
+void DealokasiKota(Kaddress P);
 
-boolean IsEmpty();
+boolean IsEmpty(List kota);
 
-void InsertKLast();
+void InsertKLast(Kaddress *kota, infotype X);
 
-void InsertKAfter();
+void InsertKAfter(Kaddress *kota, infotype X);
 
-void InsertKota();
+void InsertKota(List *kota, infotype X);
 
-Kaddress SearchKota();
+Kaddress SearchKota(List kota, infotype X);
 
-int CountKota();
+int CountKota(List kota);
 
-void DeleteKFirst();
+void DeleteKFirst(List *kota);
 
-void DeleteKLast();
+void DeleteKLast(Kaddress *kota);
 
-void DeleteKAfter();
+void DeleteKAfter(Kaddress *kota);
 
-void DeleteKota();
+void DeleteKota(List *kota, int del);
 
-void PrintData();
+void PrintData(List kota);
 
 void menu();
