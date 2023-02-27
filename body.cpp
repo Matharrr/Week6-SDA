@@ -1,19 +1,30 @@
 #include "header.h"
 #include <stdio.h>
 
-void CreateList()
+void CreateList(List *kota)
 {
-	
+    First(*kota) = Nil;
 }
 
-Naddress AlokasiNama()
-{
-	
+
+Naddress AlokasiNama(infotype X) {
+    Naddress P = (Naddress)malloc(sizeof(Node));
+    if (P != NULL) {
+        P->info.nama = (char*)malloc((strlen(X.nama) + 1) * sizeof(char));
+        if (P->info.nama != NULL) {
+            strcpy(P->info.nama, X.nama);
+            P->left = NULL;
+            P->right = NULL;
+        } else {
+            free(P);
+            P = NULL;
+        }
+    }
+    return P;
 }
 
-void DealokasiNama()
-{
-	
+void DealokasiNama(Naddress P) {
+    free(P);
 }
 
 void InsertNLast()
