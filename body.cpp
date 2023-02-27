@@ -1,8 +1,7 @@
 #include "header.h"
 #include <stdio.h>
 
-void CreateList(List *kota)
-{
+void CreateList(List *kota){
     First(*kota) = Nil;
 }
 
@@ -27,20 +26,67 @@ void DealokasiNama(Naddress P) {
     free(P);
 }
 
-void InsertNLast()
-{
-	
+void InsertNLast(Naddress *P, infotype X) {
+    Naddress temp = AlokasiNama(X);
+    if (temp != NULL) {
+        if (*P == NULL) {
+            *P = temp;
+        } else {
+            Naddress last = *P;
+            while (last->next != NULL) {
+                last = last->next;
+            }
+            last->next = temp;
+        }
+    }
+}
+void InsertNAfter(Naddress *P, infotype X) {
+    Naddress NewNode = AlokasiNama(X);
+    if (NewNode != NULL) {
+        if (*P == NULL) {
+            *P = NewNode;
+        } else {
+            Naddress Q = *P;
+            while (Q->next != NULL) {
+                Q = Q->next;
+            }
+            NewNode->prev = Q;
+            Q->next = NewNode;
+        }
+    }
 }
 
-void InsertNAfter()
-{
-	
+void InsertNama(List *kota, infotype X, int add){
+    // Jika list kosong atau insert di awal
+    if(IsEmpty(*kota) || add == 1){
+        AlokasiNama(&X);
+        InsertFirst(kota, X);
+    }
+    // Jika insert di akhir
+    else if(add > CountNama(*kota)){
+        AlokasiNama(&X);
+        InsertLast(kota, X);
+    }
+    // Jika insert di tengah
+    else{
+        address P = FirstNama(*kota);
+        int i = 1;
+        while(i < add - 1 && NextNama(P) != NULL){
+            P = NextNama(P);
+            i++;
+        }
+        if(P != NULL){
+            AlokasiNama(&X);
+            InsertAfter(&P, X);
+        }
+    }
+    // Jika jumlah penduduk di atas maksimal
+    if(CountNama(*kota) > MAXNAME){
+        printf("Jumlah penduduk melebihi kapasitas maksimal.\n");
+        DelLastNama(kota);
+    }
 }
 
-void InsertNama()
-{
-	
-}
 
 int SearchNamaPerKota()
 {

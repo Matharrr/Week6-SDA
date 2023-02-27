@@ -7,8 +7,8 @@
 #define First(L) (L).First
 #define NNama(P) (P)->next_nama
 #define NKota(P) (P)->next_kota
-#define MAXCITY 10
-#define MAXNAME 50
+#define MAXCITY 7
+#define MAXNAME 10
 
 typedef char *infotype;
 typedef struct tNamaList *Naddress;
